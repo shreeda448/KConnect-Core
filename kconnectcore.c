@@ -42,7 +42,6 @@ static int proc_counts[MAX_PROCS];
 static int proc_num = 0;
 
 static long total_connections = 0;
-
 static volatile int running = 1;
 
 void sigint_handler(int sig) {
@@ -92,7 +91,6 @@ void print_connection(const Connection *c) {
 }
 
 void print_summary(void) {
-
   int top_idx[5];
   int top_n = 0;
   int used[MAX_PROCS] = {0};
@@ -125,7 +123,6 @@ void print_summary(void) {
 }
 
 int parse_line(char *buf, Connection *out) {
-
   if (buf[0] == '#' || buf[0] == '\n' || buf[0] == '\r')
     return 0;
 
