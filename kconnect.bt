@@ -1,0 +1,13 @@
+tracepoint:sock:inet_sock_set_state
+/args->family == 2/ 
+{
+    $proto = (args->protocol == 6) ? "TCP" : "UDP";
+    printf("%d|%s|%s|%d.%d.%d.%d|%d|%d\n", 
+        pid, 
+        comm, 
+        $proto, 
+        args->daddr[0], args->daddr[1], args->daddr[2], args->daddr[3], 
+        args->dport, 
+        args->sport
+    );
+}
